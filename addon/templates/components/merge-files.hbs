@@ -1,8 +1,8 @@
-{{#if error}}
-  <p>{{error}}</p>
+{{#if this.error}}
+  <p>{{this.error}}</p>
 {{/if}}
 
-<form class="uk-form-stacked" onsubmit={{action "mergeTemplate"}}>
+<form class="uk-form-stacked" onsubmit={{fn this.mergeTemplate}}>
   <p>
     <label class="uk-form-label" for="form-template">
       {{~t "merge.label"~}}
@@ -10,9 +10,9 @@
 
     <div class="uk-form-controls">
       <select class="uk-select" name="template" id="form-template" required>
-        <option value="">{{t "merge.choose"}}</option>
+        <option value="" selected disabled>{{t "merge.choose"}}</option>
 
-        {{#each templates as |template|}}
+        {{#each this.templates as |template|}}
           <option value={{template.slug}}>
             {{~template.description~}}
           </option>
@@ -21,9 +21,9 @@
     </div>
   </p>
 
-  {{uk-button
-    color="primary"
-    label=(t "merge.submit")
-    type="submit"
-  }}
+  <UkButton
+    @color="primary"
+    @label={{t "merge.submit"}}
+    @type="submit"
+  />
 </form>

@@ -1,1 +1,1 @@
-export { default } from "ember-document-merge-service/components/manage/delete";
+export { default } from "ember-document-merge-service/components/manage-files/delete";

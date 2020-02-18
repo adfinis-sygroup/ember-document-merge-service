@@ -1,6 +1,7 @@
 <h1>{{t "dummy.title"}}</h1>
 
-{{manage-files}}
+<ManageFiles />
+
 
 <hr>
 
@@ -10,14 +11,13 @@
   </label>
 
   <div class="uk-form-controls">
-    {{textarea
-      id="data"
-      value=input
-      change=(action "updateData")
-    }}
+    <Textarea
+      @value={{this.input}}
+      id={{concat this.elementId "-data"}}
+    />
   </div>
 </p>
 
-{{merge-files data=data}}
+<MergeFiles @data={{this.data}} />
 
 {{outlet}}

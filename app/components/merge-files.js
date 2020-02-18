@@ -1,1 +1,1 @@
-export { default } from "ember-document-merge-service/components/merge";
+export { default } from "ember-document-merge-service/components/merge-files";

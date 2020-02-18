@@ -1,0 +1,61 @@
+<form class="uk-form-stacked" onsubmit={{fn this.uploadTemplate}}>
+  <p>
+    <label class="uk-form-label" for="form-slug">{{t "manage.slug"}}</label>
+    <div class="uk-form-controls">
+      <Input
+        @name="slug"
+        @required={{true}}
+        class={{concat "uk-input " (if (get this.error "slug") "uk-form-danger")}}
+        id={{concat this.elementId "-form-slug"}}
+      />
+    </div>
+    {{#if (get error "slug")}}
+      <div class="uk-text-danger">{{get this.error "slug"}}</div>
+    {{/if}}
+  </p>
+
+  <p>
+    <label class="uk-form-label" for="form-description">{{t "manage.label"}}</label>
+    <div class="uk-form-controls">
+      <Input
+        @name="description"
+        @required={{true}}
+        class={{concat "uk-input " (if (get this.error "description") "uk-form-danger")}}
+        id={{concat this.elementId "-form-description"}}
+      />
+    </div>
+    {{#if (get error "description")}}
+      <div class="uk-text-danger">{{get this.error "description"}}</div>
+    {{/if}}
+  </p>
+
+  <p>
+    <label class="uk-form-label" for="form-template">{{t "manage.file"}}</label>
+    <div class="uk-form-controls">
+      <div uk-form-custom="target: true" class="uk-width-1-1">
+        <input
+          type="file"
+          name="template"
+          id={{concat this.elementId "-form-template" }}
+          required
+        >
+
+        <input
+          class="uk-input {{if (get this.error "template") "uk-form-danger"}}"
+          type="text"
+          placeholder={{t "manage.select"}}
+          readonly
+        >
+      </div>
+    </div>
+    {{#if (get error "slug")}}
+      <div class="uk-text-danger">{{get this.error "template"}}</div>
+    {{/if}}
+  </p>
+
+  <UkButton
+    @label={{t "manage.upload"}}
+    @type="submit"
+    @color="primary"
+  />
+</form>

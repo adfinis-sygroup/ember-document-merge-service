@@ -1,0 +1,10 @@
+<ManageFiles::Delete
+  @templates={{this.templates}}
+  @on-fetch={{fn this.setTemplates}}
+  @on-delete={{fn this.removeTemplate}}
+/>
+
+<ManageFiles::Upload
+  @templates={{this.templates}}
+  @on-upload={{fn this.addTemplate}}
+/>

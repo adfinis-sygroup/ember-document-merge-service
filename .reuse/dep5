@@ -1,0 +1,10 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: ember-document-merge-service
+Upstream-Contact: Adfinis SyGroup AG <info@adfinis-sygroup.ch>
+Source: https://github.com/adfinis-sygroup/ember-document-merge-service
+
+# Sample paragraph, commented out:
+#
+# Files: src/*
+# Copyright: $YEAR $NAME <$CONTACT>
+# License: ...

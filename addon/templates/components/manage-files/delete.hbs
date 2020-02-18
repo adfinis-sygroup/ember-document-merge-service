@@ -1,0 +1,55 @@
+{{#if this.error}}
+  <p>{{this.error}}</p>
+{{/if}}
+
+{{#if (not (is-empty @templates))}}
+  {{#uk-list striped=true as |list|}}
+    {{#each @templates as |template|}}
+      {{#list.item}}
+        <a
+          href={{template.template}}
+          target="_blank"
+          rel="noopener"
+        >
+          {{~template.description~}}
+        </a>
+
+        <button
+          uk-icon="icon: close"
+          class="uk-icon-button"
+          type="button"
+          {{action "requestDelete" template}}
+        ></button>
+      {{/list.item}}
+    {{/each}}
+  {{/uk-list}}
+{{else}}
+  <p>{{t "manage.no-templates"}}</p>
+{{/if}}
+
+<UkModal
+  @visible={{not-eq this.selected null}}
+  @on-hide={{action (mut this.selected) null}}
+  as |modal|
+>
+  <modal.header>
+    <strong class="uk-modal-title">{{t "manage.delete.heading"}}</strong>
+  </modal.header>
+
+  <modal.body>
+    <p>{{t "manage.delete.message" file=this.selected.description}}</p>
+  </modal.body>
+
+  <modal.footer class="uk-text-right">
+    <UkButton
+      @label={{t "manage.delete.cancel"}}
+      @on-click={{action "cancelDelete"}}
+    />
+
+    <UkButton
+      @color="primary"
+      @label={{t "manage.delete.submit"}}
+      @on-click={{action "submitDelete" this.selected}}
+    />
+  </modal.footer>
+</UkModal>

@@ -1,17 +1,17 @@
 import Controller from "@ember/controller";
+import { guidFor } from "@ember/object/internals";
+import { tracked } from "@glimmer/tracking";
 
-export default Controller.extend({
-  input: "",
-  data: null,
+export default class ApplicationController extends Controller {
+  @tracked input = "{}";
+  elementId = guidFor(this);
 
-  actions: {
-    updateData(event) {
-      const { value } = event.target;
-      try {
-        this.set("data", JSON.parse(value));
-      } catch (error) {
-        alert(error.message);
-      }
+  get data() {
+    try {
+      return JSON.parse(this.input);
+    } catch (error) {
+      alert(error.message);
+      return {};
     }
   }
-});
+}
